@@ -25,11 +25,11 @@ SECRET_KEY = 'django-insecure-bepq3n)icm_te=c_%ef=b!hta^7m(2-ag*j$nr_e3c&xt1o_f-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = []
 
-CSRF_TRUSTED_ORIGINS = [
-    'https://ss-greetings.azurewebsites.net',
-]
+# CSRF_TRUSTED_ORIGINS = [
+#     'https://ss-greetings.azurewebsites.net',
+# ]
 # Application definition
 
 INSTALLED_APPS = [
