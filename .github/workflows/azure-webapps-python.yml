@@ -26,7 +26,7 @@ jobs:
       - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v3
         with:
-          app-name: <YOUR_AZURE_APP_NAME>   # replace with your App Service name
+          app-name: ss-greetings   # replace with your App Service name
           slot-name: Production
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE }}
           package: .
