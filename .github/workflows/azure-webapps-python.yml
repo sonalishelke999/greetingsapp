@@ -3,7 +3,7 @@ name: Deploy Django App to Azure Web App
 on:
   push:
     branches:
-      - main  # deploy when pushing to main
+      - main
 
 jobs:
   build-and-deploy:
@@ -18,22 +18,15 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Install dependencies locally
+      - name: Install dependencies (for sanity checks)
         run: |
           python -m pip install --upgrade pip
-          # Install packages into a folder included in deployment
-          pip install --upgrade --target=.python_packages -r requirements.txt
-          pip install gunicorn
-
-      - name: Prepare for deployment
-        run: |
-          # Include installed packages in the deploy zip
-          zip -r deploy.zip . -x "*.git*" "*.github*"
+          pip install -r requirements.txt
 
       - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v3
         with:
-          app-name: ss-greetings    # replace with your App Service name
+          app-name: <YOUR_AZURE_APP_NAME>   # replace with your App Service name
           slot-name: Production
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE }}
-          package: deploy.zip
+          package: .
